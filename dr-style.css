@@ -1,0 +1,638 @@
+/* =====================================================================
+   D&R Veranstaltungsseite – CSS-Anpassung (EMO)
+   Client: DONNER & REUSCHEL · Agency: Euphorika · Linear DEV-1125
+   ---------------------------------------------------------------------
+   Nur dieses File wird in EMO hochgeladen. Es bringt die moderne
+   Veranstaltungsseite auf das Figma-Design ("Eventseite V2.2 HH").
+   Scope: alles unter #main-content / section-ids / .hero-section /
+   footer.footer-modern. HTML wird NICHT geaendert.
+
+   Reihenfolge:
+   Fonts → Variablen → Basics → Hero → Anchor-Nav → About →
+   Anmeldung → Programm → Veranstaltungsort → Veranstalter →
+   Footer → Mobile
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1) FONTS
+   Archivo Black (Headlines, uppercase) + Open Sans (Fliesstext).
+   In EMO liegen die Fonts als absolute URLs auf app/content.eventmanager-
+   online.com. Solange diese URLs nicht vorliegen, laden wir die
+   identischen Google-Fonts – dieselben Schnitte, testbar mit Internet.
+   --------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* ---------------------------------------------------------------------
+   2) VARIABLEN (Design-Tokens aus Figma)
+   --------------------------------------------------------------------- */
+:root {
+    --dr-navy:        #124a7e;  /* Headlines, Buttons, Labels            */
+    --dr-mint:        #e1f4f3;  /* Anmeldung-Band                        */
+    --dr-grey-light:  #f2f2f2;  /* Auf einen Blick, Veranstaltungsort    */
+    --dr-grey:        #dddddd;  /* Veranstalter-Band                     */
+    --dr-logo-box:    #efefef;  /* Logo-Kasten Hintergrund               */
+    --dr-text:        #1d1d1d;  /* Fliesstext                            */
+    --dr-font-head:   'Archivo Black', 'Arial Black', sans-serif;
+    --dr-font-body:   'Open Sans', system-ui, -apple-system, sans-serif;
+    --dr-container:   1150px;
+}
+
+/* ---------------------------------------------------------------------
+   3) BASICS
+   Palette, Schrift und Container global auf D&R umstellen. Durch das
+   Ueberschreiben von --primary-color erben saemtliche Navy-Stellen
+   (Headings, Buttons, Labels, Links) exakt den Figma-Navy; --btn-radius
+   0 macht alle EMO-Buttons eckig – ohne jeden Button einzeln zu fassen.
+   --------------------------------------------------------------------- */
+#main-content,
+footer.footer-modern {
+    --primary-color: var(--dr-navy);
+    --primary-dark:  var(--dr-navy);
+    --link-color:    var(--dr-navy);
+    --btn-radius:    0;
+    font-family: var(--dr-font-body);
+}
+
+/* Basisschrift: Figma-Fliesstext = 16px (EMO-Default ist 18px) */
+#main-content {
+    color: var(--dr-text);
+    font-size: 16px;
+}
+
+/* Container auf Figma-Breite (~1150px) */
+#main-content .modern-container,
+footer.footer-modern .modern-container {
+    max-width: var(--dr-container);
+}
+
+/* Headlines: Archivo Black, uppercase, Navy. Die Inline-Icons in den
+   Ueberschriften sind bereits per index.html-Style ausgeblendet. */
+#main-content .section-title,
+#main-content #section-about .col-lg-8 h2,
+#main-content .brand-box h3,
+#main-content #section-agenda h4,
+#main-content #section-location .card > h2 {
+    font-family: var(--dr-font-head);
+    font-weight: 400;              /* Archivo Black ist bereits fett     */
+    text-transform: uppercase;
+    color: var(--dr-navy);
+    letter-spacing: .01em;
+    line-height: 1.15;
+}
+
+/* Section-Titel: Figma-Headline = 40px */
+#main-content .section-title {
+    font-size: 2.5rem;         /* 40px */
+    margin-bottom: 2rem;
+}
+
+/* Buttons: eckig, Navy, weiss, uppercase Archivo Black */
+#main-content .btn-book,
+#main-content .map-link.map-link--btn {
+    font-family: var(--dr-font-head);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .02em;
+    border-radius: 0;
+}
+
+/* ---------------------------------------------------------------------
+   4) HERO
+   Nur Foto, ~380px hoch. Kein Titel, kein Button, kein Datum.
+   Das Hintergrundbild + background-position setzt EMO inline – bleibt.
+   --------------------------------------------------------------------- */
+.hero-section {
+    padding: 0 !important;
+    min-height: 380px;
+    height: 380px;
+    /* Das Logo ist oben links ins Foto eingebrannt. Bei fixer Hero-Hoehe +
+       background-size:cover schneidet EMOs "right center" auf grossen/breiten
+       Screens die BILDOBERKANTE (= Logo) ab. Oben links verankern, damit das
+       Logo auf jeder Breite sichtbar bleibt. */
+    background-position: left top !important;
+}
+
+/* Titel + CTA entfernen – Foto spricht fuer sich (Logo steckt im Bild) */
+.hero-section .hero-content {
+    display: none;
+}
+
+/* OPTIONALER Logo-Kasten oben links – nur fuer Events, deren Foto KEIN
+   Logo enthaelt. Standardmaessig AUS (das Testfoto hat das Logo schon).
+   Zum Aktivieren: URL des D&R-Logos eintragen und Block einkommentieren.
+
+.hero-section {
+    position: relative;
+}
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 180px;
+    height: 72px;
+    background: #ffffff url("https://content.eventmanager-online.com/PFAD-ZUM-DR-LOGO.svg") center / contain no-repeat;
+    z-index: 2;
+}
+*/
+
+/* ---------------------------------------------------------------------
+   5) ANCHOR-NAV – im Design ausgeblendet
+   --------------------------------------------------------------------- */
+#main-content #anchor-nav.anchor-nav {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   6) ABOUT (#section-about)
+   Links: grosse Navy-Headline + Fliesstext, keine Karte.
+   Rechts: graue "Auf einen Blick"-Box, Label ueber Wert, keine Buttons.
+   --------------------------------------------------------------------- */
+
+/* Linke Spalte: Karten-Optik entfernen */
+#section-about .col-lg-8 > .card {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+}
+#section-about .col-lg-8 > .card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Headline aus der Event-Beschreibung (Figma 40px) */
+#section-about .col-lg-8 h2 {
+    font-size: 2.5rem;         /* 40px */
+    margin: 0 0 1.25rem;
+}
+
+/* Beschreibungstext: Figma 16px, einheitliche Textfarbe (Inline 1.1rem
+   und die .card-Farbe #1a202c ueberschreiben) */
+#section-about .col-lg-8 > .card > div {
+    font-size: 1rem !important;    /* 16px */
+    color: var(--dr-text) !important;
+}
+/* EMO haengt der Headline oft ein leeres <h2><br></h2> als Abstandshalter
+   an – das erzeugt eine grosse Luecke. Zweite direkt folgende h2 entfernen. */
+#section-about .col-lg-8 h2 + h2 {
+    display: none;
+}
+
+/* Fliesstext: Die Beschreibung trennt Absaetze mit <br><br><br> (grosse
+   Luecken). Ein CSS-Kollaps ist NICHT zuverlaessig moeglich: Geschwister-
+   Kombinatoren (br + br) ueberspringen Textknoten, dadurch bilden alle <br>
+   eine einzige Kette und eine Regel wuerde auch die Absatz-Umbrueche treffen
+   (Text klebt zusammen). line-height/font-size auf <br> schrumpfen die
+   Leerzeilen ebenfalls nicht. -> Content-Aufgabe: Redaktion soll echte
+   Absaetze statt mehrfacher <br> verwenden (siehe NOTES.md). */
+
+/* "Auf einen Blick"-Box: grau, flach, kein Navy-Rahmen */
+#section-about .brand-box {
+    background: var(--dr-grey-light) !important;
+    border: 0 !important;
+    border-left: 0 !important;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 1.75rem;
+}
+#section-about .brand-box:hover {
+    transform: none;
+    box-shadow: none;
+}
+#section-about .brand-box h3 {
+    font-size: 1rem;
+    letter-spacing: .06em;
+    margin: 0 0 1.25rem !important;
+}
+
+/* Info-Zeilen: Label ueber Wert statt nebeneinander */
+#section-about .brand-box .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .15rem;
+    padding: .7rem 0;
+    border-bottom: 0;          /* Figma: keine Trennlinien in der Box */
+}
+/* Label: fett, dunkelgrau (nicht Navy), normale Schreibweise + Doppelpunkt
+   (Figma: "Datum:"). Farbe mit !important, damit EMOs Basis-Regel nicht
+   stoert. Label = Wert-Farbe, nur fett -> hebt sich ohne Blau ab. */
+#section-about .brand-box .info-label {
+    font-family: var(--dr-font-body);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 1rem;
+    letter-spacing: 0;
+    color: var(--dr-text) !important;   /* #1d1d1d */
+}
+#section-about .brand-box .info-label::after {
+    content: ":";
+}
+#section-about .brand-box .info-row > span[style] {
+    text-align: left !important;
+    font-size: 1rem;
+    color: var(--dr-text);
+}
+
+/* Kalender/Teilen-Buttons raus (laut Figma nicht vorhanden) */
+#section-about .event-actions {
+    display: none;
+}
+
+/* ---------------------------------------------------------------------
+   7) ANMELDUNG (#tickets-section)
+   Mint-Band, zentrierte Headline, einzeiliger Intro, ein Navy-Button.
+   Keine Ticket-Karte, kein Ticket-Name.
+   --------------------------------------------------------------------- */
+#tickets-section {
+    background: var(--dr-mint) !important;
+}
+#tickets-section .section-title {
+    text-align: center;
+}
+
+/* Ticket-Karte auf reinen Button reduzieren */
+#tickets-section .ticket-card {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+}
+#tickets-section .ticket-card:hover {
+    transform: none;
+    box-shadow: none;
+    border: 0;
+}
+#tickets-section .ticket-name {
+    display: none;
+}
+
+/* Button mittig, Inhaltsbreite statt 100% */
+#tickets-section .btn-book {
+    width: auto;
+    display: inline-block;
+    padding: 1rem 2.75rem;
+}
+
+/* ---------------------------------------------------------------------
+   8) PROGRAMM (#section-agenda)
+   Linksbuendige Headline. Je Tag ein Navy-Tag ("TAG 1"). Je Item: Zeit
+   links (~180px, Navy, uppercase), Titel + Text rechts. Keine Timeline-
+   Linie, keine Punkte, keine farbigen Karten.
+   --------------------------------------------------------------------- */
+#section-agenda .section-title {
+    text-align: left;
+}
+
+/* Timeline-Linie + Einrueckung entfernen */
+#section-agenda .agenda-timeline {
+    padding-left: 0;
+    counter-reset: dr-day;
+}
+#section-agenda .agenda-timeline::before {
+    display: none;
+}
+
+/* Tag-Label als Navy-Tag.
+   Primaer: EMO rendert je Tag eine Ueberschrift (h3) mit Datum
+   ("Tag 1 - 07.08.2026") – diese wird als Tag gestylt.
+   Fallback: fehlt die Ueberschrift (wie in dieser Test-Kopie), erzeugt ein
+   Counter "TAG N" (ohne Datum, da im Markup nicht vorhanden). */
+#section-agenda .day-section {
+    counter-increment: dr-day;
+    margin-bottom: 1.25rem;
+}
+#section-agenda .day-section > h3,
+#section-agenda .day-section:not(:has(> h3))::before {
+    display: inline-block;
+    background: var(--dr-navy);
+    color: #fff !important;
+    font-family: var(--dr-font-head);
+    text-transform: uppercase;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    line-height: 1.2;
+    padding: .45rem 1rem;
+    margin: 0 0 1.75rem;
+}
+#section-agenda .day-section > h3 * {
+    color: #fff !important;             /* span(number) mitfaerben */
+}
+#section-agenda .day-section:not(:has(> h3))::before {
+    content: "TAG " counter(dr-day);
+}
+
+/* Item: flache Zeile ohne Trennlinie. Zeit + optionales Speaker-Foto links,
+   Titel + Text rechts (Grid). Inline-Hintergruende (#ede9fe …) neutralisieren. */
+#section-agenda .agenda-item {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    column-gap: 2rem;
+    background: none !important;
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    margin: 0 0 2rem;
+    padding: 0;
+}
+#section-agenda .agenda-item::before {
+    display: none;             /* Timeline-Punkt weg */
+}
+
+/* Zeit: linke Spalte oben, Navy, uppercase, ohne Pille */
+#section-agenda .agenda-time {
+    grid-column: 1;
+    align-self: start;
+    display: block;
+    background: none !important;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    font-family: var(--dr-font-head);
+    text-transform: uppercase;
+    font-size: .875rem;        /* 14px – war 12.8px (zu klein) */
+    letter-spacing: .02em;
+    color: var(--dr-navy);
+}
+
+/* Titel + Text: rechte Spalte */
+#section-agenda .agenda-item > h4 {
+    grid-column: 2;
+    margin: 0 0 .5rem !important;
+    font-size: 1.125rem;       /* 18px Item-Titel */
+    color: var(--dr-navy) !important;   /* schlaegt Inline var(--agenda-title) */
+}
+#section-agenda .agenda-item > p {
+    grid-column: 2;
+    margin: 0 0 .5rem !important;
+    color: var(--dr-text) !important;
+    line-height: 1.6;
+}
+
+/* Speaker-/Extra-Zeile: unter die Zeit in die linke Spalte, linksbuendig.
+   :not(.agenda-time) ist entscheidend – die Zeit ist selbst ein <div> und
+   wuerde sonst mitgefasst und nach unten geschoben (Zeit/Titel saessen
+   dann nicht mehr auf einer Linie). margin-top: 0, damit OHNE Bild keine
+   Luecke entsteht – der Abstand haengt am Bild (siehe unten). */
+#section-agenda .agenda-item > div:not(.agenda-time) {
+    grid-column: 1;
+    justify-content: flex-start !important;
+    margin-top: 0 !important;
+}
+
+/* Speaker-Foto: quadratisch mit Mint-Rahmen; Abstand nur wenn ein Bild da ist */
+#section-agenda .agenda-item img {
+    width: 120px;
+    height: 120px;
+    margin-top: .75rem;
+    object-fit: cover;
+    border: 7px solid var(--dr-mint);
+    border-radius: 0;
+}
+
+/* ---------------------------------------------------------------------
+   9) VERANSTALTUNGSORT (#section-location)
+   Graues Band, zentriert: Headline, Adresse (Venue fett Navy), Button
+   "ROUTE MIT GOOGLE MAPS PLANEN". Barrierefreiheit darunter, kleiner.
+   (Im Testevent existiert nur die Barrierefreiheit-Karte.)
+   --------------------------------------------------------------------- */
+#section-location {
+    background: var(--dr-grey-light) !important;
+}
+
+/* Karte(n) flach & zentriert */
+#section-location .card {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 1rem 0;
+    text-align: center;
+}
+#section-location .card:hover {
+    transform: none;
+    box-shadow: none;
+}
+#section-location .card > h2 {
+    display: block !important;      /* Inline display:flex aufheben */
+    text-align: center;
+    font-size: 1.4rem;
+    margin: 0 0 1rem !important;
+}
+#section-location .guest-info-text,
+#section-location .location-info {
+    text-align: center;
+}
+#section-location .guest-info-text {
+    color: var(--dr-text);          /* einheitliche Textfarbe statt #010101 */
+}
+
+/* Adresse / Venue – fuer Events MIT Standort (hier nicht im Markup) */
+#section-location .location-info {
+    background: none;
+    border: 0;
+    padding: 0;
+}
+#section-location .location-address {
+    font-size: 1.05rem;
+}
+#section-location .location-address strong {
+    color: var(--dr-navy);
+}
+
+/* Map-Link als Navy-Button */
+#section-location .map-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .9rem 2rem;
+    background: var(--dr-navy);
+    color: #fff;
+    font-family: var(--dr-font-head);
+    text-transform: uppercase;
+    font-size: .85rem;
+    letter-spacing: .02em;
+}
+#section-location .map-link:hover {
+    color: #fff;
+    filter: brightness(.9);
+}
+
+/* ---------------------------------------------------------------------
+   10) VERANSTALTER (#section-organizer)
+   Zentrierte Headline, Logo-Kasten (150x150) der ein graues Band
+   ueberlappt; im Band: Firma (fett Navy), Ort, Webseite, Navy-Button.
+   --------------------------------------------------------------------- */
+#section-organizer .section-title {
+    text-align: center;
+}
+
+/* Karte = VOLLBREITES graues Band (#dddddd). Full-Bleed aus der schmalen
+   col-lg-8 heraus ueber die ganze Viewport-Breite. #main-content hat
+   overflow-x: clip, daher kein horizontales Scrollen durch 100vw. */
+#section-organizer .organizer-card {
+    margin-left: calc(50% - 50vw);  /* Full-Bleed ueber negative Margins -   */
+    margin-right: calc(50% - 50vw); /* ohne 100vw-Breite (stabiler auf Mobil) */
+    margin-top: 140px;              /* Weissraum oberhalb des Bandes          */
+    position: relative;             /* Bezug fuer den absolut gesetzten Logo   */
+    background: var(--dr-grey);
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    padding: 130px 1rem 3rem;       /* oben Platz fuer die untere Logo-Haelfte */
+    text-align: center;
+}
+
+/* Header ohne Navy-Verlauf */
+#section-organizer .organizer-header {
+    background: none !important;
+    color: var(--dr-navy);
+    padding: 0;
+}
+/* Logo-Kasten ragt oben aus dem Band heraus (absolut -> echtes Overlap,
+   kein Margin-Collapse mit der Bandkante). ~100px im Weissraum, Rest im Band. */
+#section-organizer .organizer-image {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 220px;
+    height: 220px;
+    padding: 1.25rem;
+    border-radius: 0 !important;
+    background: var(--dr-logo-box) !important;   /* #efefef */
+    border: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--dr-navy);
+}
+/* Echtes Logo (EMO rendert ein <img>, wenn der Veranstalter eines hat) */
+#section-organizer .organizer-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+/* Firmenname: Open Sans fett Navy, normale Schreibweise (NICHT Archivo) */
+#section-organizer .organizer-header h3 {
+    font-family: var(--dr-font-body);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dr-navy);
+    margin: 0 0 .5rem !important;
+}
+
+/* Body = Teil des Bandes, zentriert. Nur Werte zeigen (Labels raus). */
+#section-organizer .organizer-body {
+    background: none;
+    padding: .5rem 0 0;
+}
+#section-organizer .organizer-body .info-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .4rem;
+    border: 0;
+    padding: .2rem 0;
+}
+#section-organizer .organizer-body .info-label {
+    display: none;                  /* "Standort:" / "Webseite:" etc. ausblenden */
+}
+#section-organizer .organizer-body .info-row span,
+#section-organizer .organizer-body a {
+    color: #444 !important;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Fuehrende Zeilen ausblenden: Organisation (immer, = doppelt zum Header) und
+   – falls vorhanden – Ansprechpartner. Von HINTEN gezaehlt sind Standort /
+   Webseite / Profil stabil (3./2./letzte Zeile), egal ob 4 oder 5 Zeilen;
+   alles davor (ab der 4.-letzten) wird ausgeblendet. */
+#section-organizer .organizer-body .info-row:nth-last-child(n+4) {
+    display: none;
+}
+
+/* Profil = letzte Zeile: Link als Navy-Button.
+   HINWEIS: Der Linktext kommt aus EMO ("Veranstalterprofil ansehen") und
+   zeigt auf die Profilseite. "NACHRICHT SENDEN" (Figma) ist per CSS nicht
+   moeglich – es gibt keinen Mail-/Kontakt-Link im Markup (siehe NOTES.md). */
+#section-organizer .organizer-body .info-row:last-child {
+    margin-top: 1.5rem;
+}
+#section-organizer .organizer-body .info-row:last-child a {
+    display: inline-block;
+    padding: .9rem 2.25rem;
+    background: var(--dr-navy);
+    color: #fff !important;
+    font-family: var(--dr-font-head);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: .85rem;
+    letter-spacing: .02em;
+}
+#section-organizer .organizer-body .info-row:last-child a:hover {
+    filter: brightness(.9);
+}
+
+/* OPTIONAL: D&R-Logo per CSS einblenden, falls der Veranstalter in EMO kein
+   Logo hinterlegt hat (dann steht im Kasten nur ein Platzhalter-Icon).
+   Logo-URL eintragen und einkommentieren:
+
+#section-organizer .organizer-image {
+    background: var(--dr-logo-box) url("https://content.eventmanager-online.com/PFAD-ZUM-DR-LOGO.svg") center / 70% no-repeat !important;
+}
+#section-organizer .organizer-image i { display: none; }
+*/
+
+/* ---------------------------------------------------------------------
+   11) FOOTER – EMO-Footer bleibt dunkel, kein Abstand darueber
+   --------------------------------------------------------------------- */
+footer.footer-modern {
+    margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------
+   12) MOBILE
+   Hero ~220px, Agenda einspaltig, kein horizontales Scrollen.
+   --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 220px;
+        height: 220px;
+        /* background-position: left top – siehe Basis-Regel (gilt ueberall) */
+    }
+
+    #main-content .section-title,
+    #section-about .col-lg-8 h2 {
+        font-size: 1.9rem;         /* ~30px – 40px waere mobil zu breit */
+    }
+
+    /* Agenda einspaltig: Zeit ueber Titel */
+    #section-agenda .agenda-item {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: .35rem;
+    }
+    #section-agenda .agenda-item > .agenda-time {
+        grid-row: auto;
+        margin-bottom: .25rem;
+    }
+    #section-agenda .agenda-item > h4,
+    #section-agenda .agenda-item > p,
+    #section-agenda .agenda-item > div {
+        grid-column: 1;
+    }
+
+    /* Logo-Kasten mobil kleiner (sonst breiter als schmale Viewports) */
+    #section-organizer .organizer-image {
+        width: 150px;
+        height: 150px;
+        max-width: 70vw;
+        top: -70px;
+    }
+    #section-organizer .organizer-card {
+        margin-top: 100px;
+        padding: 95px 1rem 2rem;
+    }
+}
