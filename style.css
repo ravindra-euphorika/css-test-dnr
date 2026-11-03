@@ -1,0 +1,602 @@
+@charset "UTF-8";
+/* archivo-black-regular - latin */
+/* archivo-black-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Archivo Black";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/css/fonts/archivo-black/archivo-black-v21-latin-regular.woff2") format("woff2"), url("/css/fonts/archivo-black/archivo-black-v21-latin-regular.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* open-sans-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/css/fonts/open-sans-v40/open-sans-v40-latin-regular.woff2") format("woff2"), url("/css/fonts/open-sans-v40/open-sans-v40-latin-regular.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* open-sans-700 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/css/fonts/open-sans-v40/open-sans-v40-latin-700.woff2") format("woff2"), url("/css/fonts/open-sans-v40/open-sans-v40-latin-700.ttf") format("truetype");
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+body#wizard {
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
+  font-family: "Open Sans", sans-serif !important;
+  color: #404040 !important;
+  font-size: 16px !important;
+  line-height: 1.5em !important;
+  background: #fff;
+}
+@media screen and (max-width: 425px) {
+  body#wizard {
+    margin-top: 20px;
+  }
+}
+body#wizard > #container {
+  padding: 0 !important;
+}
+body#wizard #content_iframe > header {
+  display: none;
+}
+body#wizard #content_iframe form {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+body#wizard #content_iframe form fieldset {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  color: #000;
+}
+body#wizard #content_iframe form fieldset > section {
+  background: none;
+  border: 0;
+  float: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 425px) {
+  body#wizard #content_iframe form fieldset > section {
+    flex-wrap: wrap;
+  }
+}
+body#wizard #content_iframe form fieldset > section > label {
+  width: 100%;
+  margin-right: 10px;
+}
+body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
+  float: none;
+  padding: 5px 0;
+  margin-left: 0 !important;
+}
+@media screen and (max-width: 425px) {
+  body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
+    padding: 5px 0;
+  }
+}
+body#wizard #content_iframe form fieldset > section .stars {
+  padding: 0 !important;
+  background-repeat-y: no-repeat;
+}
+body#wizard #content_iframe form fieldset > section > div {
+  border: 0;
+  width: 100% !important;
+}
+body#wizard #content_iframe .fr {
+  float: left !important;
+}
+body#wizard #content_iframe #wizard_packages_table table {
+  background: none;
+}
+body#wizard #content_iframe #wizard_packages_table table tbody.payment_table {
+  display: none;
+}
+body#wizard #content_iframe #wizard_packages_table table th, body#wizard #content_iframe #wizard_packages_table table td {
+  border-color: #f2f1f1;
+  background: none;
+  color: #404040;
+  font-size: 14px;
+}
+body#wizard #content_iframe #wizard_packages_table table th:empty, body#wizard #content_iframe #wizard_packages_table table td:empty {
+  display: none;
+}
+body#wizard #content_iframe #wizard_packages_table table th {
+  background-color: #f2f1f1;
+  text-transform: uppercase;
+  font-family: "Archivo Black", sans-serif;
+}
+body#wizard #content_iframe #wizard_packages_table table td .radio {
+  display: none;
+}
+body#wizard #content_iframe .summary_table {
+  display: none;
+}
+body#wizard #content_iframe #content {
+  width: 90%;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  margin: auto;
+  border: 0;
+}
+@media screen and (max-width: 480px) {
+  body#wizard #content_iframe #content {
+    width: 90%;
+    margin: auto;
+  }
+}
+body#wizard #content_iframe #content div#step_3 > div {
+  padding: 0 !important;
+}
+body#wizard #content_iframe #content div#step_2 > div {
+  padding: 0 !important;
+  width: 100%;
+}
+body#wizard #content_iframe #content #result center + br {
+  display: none;
+}
+body#wizard #content_iframe #content #result center + br + br {
+  display: none;
+}
+body#wizard #content_iframe #content #result center + br + br + br {
+  display: none;
+}
+body#wizard #content_iframe .outer-div {
+  padding: 0;
+}
+body#wizard #content_iframe #wizard_packages_text {
+  font-family: "Archivo Black", sans-serif;
+  color: #124a7e;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+body#wizard .byline {
+  width: 90%;
+  margin: auto;
+  border-top: solid 1px #f2f1f1;
+  margin-top: 30px;
+  padding-top: 30px;
+}
+@media screen and (min-width: 420px) {
+  body#wizard .byline {
+    padding: 0 40px;
+  }
+}
+body a#wizard_show_chose_package {
+  background-color: white;
+}
+
+iframe#id_eventmgr_if {
+  margin: 0 !important;
+}
+
+.breadcrumb {
+  font-family: "Archivo Black", sans-serif;
+  display: flex;
+  background-color: #f2f1f1;
+  pointer-events: none;
+  cursor: default;
+  opacity: initial !important;
+  text-decoration: none;
+}
+.breadcrumb li#breadcrumb_data {
+  background-color: white !important;
+  pointer-events: none !important;
+  cursor: default !important;
+  text-decoration: none !important;
+}
+.breadcrumb #breadcrumb_response {
+  display: none !important;
+}
+.breadcrumb li {
+  float: none;
+  max-width: none;
+  flex-basis: 100%;
+}
+.breadcrumb li a {
+  background: none;
+  border: 0;
+  display: flex;
+  padding: 0 !important;
+  min-height: 70px;
+  margin-left: 0;
+  align-items: center;
+  font-size: 24px;
+  color: #a19e9d;
+  text-transform: uppercase;
+}
+.breadcrumb li a.active {
+  text-shadow: none;
+  background-color: #fff;
+  margin: 0;
+  padding: 10px 0 5px;
+  color: #124a7e;
+}
+.breadcrumb li:first-child a {
+  border: 0;
+  line-height: 1em;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+.breadcrumb.disabled li a:hover {
+  text-shadow: none;
+  color: #124a7e !important;
+  text-decoration: none !important;
+}
+.breadcrumb.disabled li a.disable_header:hover {
+  color: #a19e9d !important;
+}
+
+.breadcrumb {
+  background-color: #ffffff;
+}
+.breadcrumb #wizard_show_first_page-signup-link .i_house {
+  display: none;
+}
+.breadcrumb #breadcrumb_package, .breadcrumb #breadcrumb_data {
+  display: none !important;
+}
+
+#breadcrumbcontent_basic select {
+  min-width: 100% !important;
+}
+
+a.btn, button.btn {
+  font-family: "Archivo Black", sans-serif;
+  text-transform: uppercase;
+  color: #124a7e;
+  background: none;
+  border: solid 1px #124a7e;
+  font-size: 22px;
+  padding: 15px 15px;
+  border-radius: 0;
+  box-shadow: none;
+  line-height: 1;
+  text-shadow: none;
+}
+a.btn.icon, button.btn.icon {
+  padding-left: 55px;
+}
+@media screen and (max-width: 425px) {
+  a.btn.icon, button.btn.icon {
+    padding: 15px;
+  }
+}
+a.btn.icon.i_arrow_right, button.btn.icon.i_arrow_right {
+  background: none;
+}
+a.btn:hover, button.btn:hover {
+  color: #124a7e !important;
+  text-decoration: none !important;
+}
+@media screen and (min-width: 425px) {
+  a.btn, button.btn {
+    padding: 15px 55px;
+  }
+}
+
+#register_event {
+  background: #124a7e;
+  color: #fff;
+  border: 0;
+  font-size: 14px;
+  line-height: 1;
+  padding: 9px 22px !important;
+}
+#register_event:hover {
+  background: #0d3a63;
+  color: #fff !important;
+}
+
+input[type=text],
+input[type=email],
+select {
+  border-radius: 0;
+  background: #f2f1f1 !important;
+  border: 0;
+  padding: 20px !important;
+  height: auto !important;
+  font-size: 16px;
+  box-shadow: none !important;
+}
+
+select {
+  height: 60px !important;
+}
+
+form .required_text {
+  margin-left: 10px !important;
+  margin-bottom: 30px !important;
+}
+form#SignupForm .fr {
+  margin-right: 40px;
+}
+@media screen and (max-width: 425px) {
+  form#SignupForm .fr {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 375px) {
+  form div#step_3 > fieldset#basicDataFieldSetSection {
+    width: 100%;
+  }
+}
+form #SignupPrivacyinfoSection > label {
+  font-size: 16px !important;
+  font-family: "Archivo Black", sans-serif;
+  text-transform: uppercase;
+  color: #124a7e;
+  font-weight: normal !important;
+}
+form #SignupPrivacyinfoSection > div {
+  text-align: left;
+  font-size: 14px !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+form #SignupPrivacyinfoSection > div span {
+  font-size: 14px !important;
+}
+form #SignupPrivacyinfoSection > div a {
+  color: #124a7e;
+  font-weight: 700;
+  text-decoration: none;
+}
+form #SignupPrivacyinfoSection > div a:hover {
+  color: #0d3a63;
+}
+@media screen and (min-width: 320px) {
+  form #SectionSignupZip > div input#SignupZip {
+    padding: 20px !important;
+    margin: 10px 1px !important;
+    width: 80% !important;
+    float: left !important;
+  }
+}
+@media screen and (min-width: 375px) {
+  form #SectionSignupZip > div input#SignupZip {
+    float: right !important;
+  }
+}
+@media screen and (min-width: 476px) {
+  form #SectionSignupZip > div input#SignupZip {
+    float: none !important;
+    width: calc(25% - 24px) !important;
+    margin-right: 4px !important;
+  }
+}
+@media screen and (min-width: 525px) {
+  form #SectionSignupZip > div input#SignupZip {
+    margin-right: 1px !important;
+    width: 80% !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  form #SectionSignupZip > div input#SignupZip {
+    width: 13% !important;
+    margin-right: 4px !important;
+  }
+}
+@media screen and (min-width: 320px) {
+  form #SectionSignupZip > div input#SignupTown {
+    padding: 20px !important;
+    margin: 10px 1px !important;
+    width: 80% !important;
+    float: left !important;
+  }
+}
+@media screen and (min-width: 375px) {
+  form #SectionSignupZip > div input#SignupTown {
+    float: right !important;
+  }
+}
+@media screen and (min-width: 476px) {
+  form #SectionSignupZip > div input#SignupTown {
+    width: calc(55% - 20px) !important;
+  }
+}
+@media screen and (min-width: 525px) {
+  form #SectionSignupZip > div input#SignupTown {
+    width: 80% !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  form #SectionSignupZip > div input#SignupTown {
+    width: calc(67% - 46px) !important;
+  }
+}
+form fieldset > section > div input[type=text] {
+  width: 100% !important;
+}
+form fieldset > section.has-checkbox {
+  flex-wrap: nowrap !important;
+  align-items: flex-start;
+}
+form fieldset > section.has-checkbox > div {
+  order: 0;
+  flex: 0 0 32px;
+  padding-left: 0;
+  padding-top: 0 !important;
+}
+form fieldset > section.has-checkbox > div .checker {
+  padding-top: 0 !important;
+  margin-right: 12px;
+}
+form fieldset > section.has-checkbox > label {
+  order: 1;
+  flex: 1 1 auto;
+  width: auto;
+}
+form fieldset > section > div {
+  text-align: left;
+}
+form fieldset > section > div input[type=text],
+form fieldset > section > div input[type=email] {
+  width: 100% !important;
+}
+form fieldset > section > div select {
+  width: 100% !important;
+}
+form fieldset > section > div > div.checker span {
+  position: relative;
+  background: #fff;
+  border: solid 1px #ccc;
+  width: 20px;
+  height: 20px;
+}
+form fieldset > section > div > div.checker span input {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1000;
+}
+form fieldset > section > div > div.checker span.checked::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  line-height: 1;
+  color: #124a7e;
+}
+
+/* Datenschutz-Label: Fettzeile oben, Fließtext darunter, Link navy/bold */
+#SignupAGBLabel {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+#SignupAGBLabel > span[style] {
+  font-weight: 400;
+}
+#SignupAGBLabel a {
+  color: #124a7e;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body#wizard form fieldset #step_3 fieldset > label {
+  background: none;
+  padding-left: 0px;
+  font-size: 15px !important;
+  font-family: "Archivo Black", sans-serif;
+  text-transform: uppercase;
+  color: #124a7e;
+  font-weight: normal !important;
+}
+body#wizard form fieldset #step_3 fieldset > label.SignupFieldSetLabelSection {
+  padding-top: 40px !important;
+}
+/* Info-/Header-Texte in "Zusätzliche Angaben" teilen sich die Heading-Klasse,
+   liegen aber in fieldset.optional_fields -> als Fließtext darstellen, nicht als Überschrift. */
+body#wizard form fieldset #step_3 fieldset.optional_fields > label.SignupFieldSetLabelSection {
+  font-family: "Open Sans", sans-serif;
+  text-transform: none;
+  color: #333;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  line-height: 1.6;
+  letter-spacing: 0;
+  padding-top: 10px !important;
+}
+@media screen and (min-width: 701px) {
+  body#wizard form fieldset #step_3 fieldset section > label {
+    width: 100% !important;
+  }
+}
+
+#step_4 {
+  font-size: 16px;
+  padding: 15px 0;
+}
+#step_4 h3 {
+  color: #124a7e;
+  text-transform: uppercase;
+}
+#step_4 a {
+  color: #124a7e !important;
+  text-decoration: none !important;
+}
+#step_4 a[href^=x-apple-data-detectors] {
+  display: none;
+}
+#step_4 a a:hover {
+  color: #124a7e !important;
+  text-decoration: underline !important;
+}
+#step_4 a.btn {
+  padding: 15px 55px !important;
+  font-size: 22px !important;
+  margin-top: 25px;
+  line-height: 25px;
+}
+@media screen and (max-width: 425px) {
+  #step_4 a.btn {
+    padding: 15px 15px !important;
+  }
+}
+#step_4 a.btn:hover {
+  background: #fff !important;
+}
+
+/* Fußnote "Mit einem Sternchen (*) ..." */
+#bylinePricingInfo {
+  font-size: 11px;
+  color: #333;
+}
+
+/* Inhaltsspalte schmaler, wie Figma (~520px) */
+body#wizard #content_iframe #content {
+  max-width: 520px;
+}
+
+/* Fehlerzustände in Rot statt Teal/Navy */
+#emoErrorSummary:not(:empty) {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 0 20px !important;
+  padding: 12px 15px !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  border: 1px solid #c0291c !important;
+  background: #fdecea !important;
+  color: #c0291c !important;
+  font-size: 14px;
+}
+form .error input[type=text],
+form .error input[type=email],
+form .error select,
+form input.error,
+form select.error {
+  border: 1px solid #c0291c !important;
+}
+form label.error,
+form .error-message,
+form .field-error {
+  color: #c0291c !important;
+}
+
+/*# sourceMappingURL=style.css.map */
