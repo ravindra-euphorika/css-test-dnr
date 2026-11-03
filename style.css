@@ -85,7 +85,7 @@ body#wizard #content_iframe form fieldset > section label, body#wizard #content_
 }
 @media screen and (max-width: 425px) {
   body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
-    padding: 5px 0;
+    padding: 0 0 5px 0;
   }
 }
 body#wizard #content_iframe form fieldset > section .stars {
