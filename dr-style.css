@@ -26,7 +26,7 @@
    2) VARIABLEN (Design-Tokens aus Figma)
    --------------------------------------------------------------------- */
 :root {
-    --dr-navy:        #124a7e;  /* Headlines, Buttons, Labels            */
+    --dr-navy:        #0E4878;  /* Headlines, Buttons, Labels (DEV-1131) */
     --dr-mint:        #e1f4f3;  /* Anmeldung-Band                        */
     --dr-grey-light:  #f2f2f2;  /* Auf einen Blick, Veranstaltungsort    */
     --dr-grey:        #dddddd;  /* Veranstalter-Band                     */
@@ -86,14 +86,18 @@ footer.footer-modern .modern-container {
     margin-bottom: 2rem;
 }
 
-/* Buttons: eckig, Navy, weiss, uppercase Archivo Black */
+/* Buttons: eckig, Navy, weiss, uppercase Archivo Black.
+   Einheitliches Padding 1rem 2rem fuer ALLE Buttons (DEV-1131). Deckt
+   Anmeldung, Route-Button und den Veranstalter-Profil-Button ab. */
 #main-content .btn-book,
-#main-content .map-link.map-link--btn {
+#main-content .map-link,
+#main-content #section-organizer .organizer-body .info-row:last-child a {
     font-family: var(--dr-font-head);
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: .02em;
     border-radius: 0;
+    padding: 1rem 2rem;
 }
 
 /* ---------------------------------------------------------------------
@@ -103,13 +107,16 @@ footer.footer-modern .modern-container {
    --------------------------------------------------------------------- */
 .hero-section {
     padding: 0 !important;
-    min-height: 380px;
-    height: 380px;
-    /* Das Logo ist oben links ins Foto eingebrannt. Bei fixer Hero-Hoehe +
-       background-size:cover schneidet EMOs "right center" auf grossen/breiten
-       Screens die BILDOBERKANTE (= Logo) ab. Oben links verankern, damit das
-       Logo auf jeder Breite sichtbar bleibt. */
-    background-position: left top !important;
+    /* Teaserbild behaelt auf ALLEN Geraeten sein Seitenverhaeltnis (DEV-1131).
+       EMO liefert das Bild in ~2.88:1 (1440x500). Statt fixer Hoehe geben wir
+       dem Hero dasselbe Verhaeltnis per aspect-ratio – dadurch wird das Bild
+       auf keiner Breite beschnitten (bei passendem Ratio = cover zeigt das
+       ganze Bild). Die Hoehe ergibt sich aus der Breite. */
+    aspect-ratio: 1440 / 500;
+    min-height: 0;
+    height: auto;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 /* Titel + CTA entfernen – Foto spricht fuer sich (Logo steckt im Bild) */
@@ -249,6 +256,21 @@ footer.footer-modern .modern-container {
 }
 #tickets-section .section-title {
     text-align: center;
+    margin-bottom: 1rem;            /* war 2rem – Abstand zum Intro verkleinern */
+}
+/* Intro-Zeile: EMO setzt margin-bottom:3rem inline – deutlich verkleinern
+   (DEV-1131: "Abstaende zwischen den Elementen zu gross") */
+#tickets-section .fade-in > div[style*="margin-bottom"] {
+    margin-bottom: 1.25rem !important;
+}
+/* Band-Innenabstand gesamt etwas kompakter */
+#tickets-section.section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+#tickets-section .ticket-card.slide-in-left,
+#tickets-section .mb-4 {
+    margin-bottom: 0 !important;
 }
 
 /* Ticket-Karte auf reinen Button reduzieren */
@@ -267,11 +289,10 @@ footer.footer-modern .modern-container {
     display: none;
 }
 
-/* Button mittig, Inhaltsbreite statt 100% */
+/* Button mittig, Inhaltsbreite statt 100% (Padding via Basics-Button-Regel) */
 #tickets-section .btn-book {
     width: auto;
     display: inline-block;
-    padding: 1rem 2.75rem;
 }
 
 /* ---------------------------------------------------------------------
@@ -350,7 +371,7 @@ footer.footer-modern .modern-container {
     border-radius: 0;
     font-family: var(--dr-font-head);
     text-transform: uppercase;
-    font-size: .875rem;        /* 14px – war 12.8px (zu klein) */
+    font-size: 1rem;           /* DEV-1131: einheitlich 1rem wie Fliesstext */
     letter-spacing: .02em;
     color: var(--dr-navy);
 }
@@ -366,6 +387,7 @@ footer.footer-modern .modern-container {
     grid-column: 2;
     margin: 0 0 .5rem !important;
     color: var(--dr-text) !important;
+    font-size: 1rem;           /* DEV-1131: einheitliche Textgroesse */
     line-height: 1.6;
 }
 
@@ -400,6 +422,17 @@ footer.footer-modern .modern-container {
     background: var(--dr-grey-light) !important;
 }
 
+/* Barrierefreiheit wird ausgeblendet (DEV-1131 – Entscheidung Euphorika).
+   Nur Styling hier; Inhalte werden im CMS gepflegt. */
+#section-location .guest-info-card {
+    display: none !important;
+}
+/* Ohne Veranstaltungsort-Inhalt (kein .location-info im Markup) bliebe nur ein
+   leeres graues Band -> ganzen Abschnitt ausblenden. */
+#section-location:not(:has(.location-info)) {
+    display: none;
+}
+
 /* Karte(n) flach & zentriert */
 #section-location .card {
     background: none;
@@ -419,12 +452,8 @@ footer.footer-modern .modern-container {
     font-size: 1.4rem;
     margin: 0 0 1rem !important;
 }
-#section-location .guest-info-text,
 #section-location .location-info {
     text-align: center;
-}
-#section-location .guest-info-text {
-    color: var(--dr-text);          /* einheitliche Textfarbe statt #010101 */
 }
 
 /* Adresse / Venue – fuer Events MIT Standort (hier nicht im Markup) */
@@ -444,7 +473,7 @@ footer.footer-modern .modern-container {
 #section-location .map-link {
     display: inline-block;
     margin-top: 1rem;
-    padding: .9rem 2rem;
+    padding: 1rem 2rem;         /* DEV-1131: einheitliches Button-Padding */
     background: var(--dr-navy);
     color: #fff;
     font-family: var(--dr-font-head);
@@ -464,6 +493,11 @@ footer.footer-modern .modern-container {
    --------------------------------------------------------------------- */
 #section-organizer .section-title {
     text-align: center;
+    margin-bottom: 0;              /* Abstand steckt im margin-top des Bandes */
+}
+/* Kein weisser Abstand zwischen Veranstalter-Band und Footer (DEV-1131) */
+#section-organizer.section {
+    padding-bottom: 0;
 }
 
 /* Karte = VOLLBREITES graues Band (#dddddd). Full-Bleed aus der schmalen
@@ -472,13 +506,14 @@ footer.footer-modern .modern-container {
 #section-organizer .organizer-card {
     margin-left: calc(50% - 50vw);  /* Full-Bleed ueber negative Margins -   */
     margin-right: calc(50% - 50vw); /* ohne 100vw-Breite (stabiler auf Mobil) */
-    margin-top: 140px;              /* Weissraum oberhalb des Bandes          */
+    margin-top: 120px;              /* Weissraum oberhalb des Bandes (DEV-1131) */
+    margin-bottom: 0;               /* Band schliesst buendig an den Footer an  */
     position: relative;             /* Bezug fuer den absolut gesetzten Logo   */
     background: var(--dr-grey);
     box-shadow: none;
     border-radius: 0;
     overflow: visible;
-    padding: 130px 1rem 3rem;       /* oben Platz fuer die untere Logo-Haelfte */
+    padding: 140px 1.5rem 3.5rem;   /* oben Platz fuer die untere Logo-Haelfte */
     text-align: center;
 }
 
@@ -514,13 +549,16 @@ footer.footer-modern .modern-container {
     max-height: 100%;
     object-fit: contain;
 }
-/* Firmenname: Open Sans fett Navy, normale Schreibweise (NICHT Archivo) */
+/* Firmenname: Open Sans fett Navy, normale Schreibweise (NICHT Archivo).
+   EMO setzt font-size:1.5rem inline -> mit !important ueberschreiben, damit
+   die Groesse zu den uebrigen Werten passt (DEV-1131: "h3 stimmt nicht"). */
 #section-organizer .organizer-header h3 {
-    font-family: var(--dr-font-body);
-    font-size: 1.25rem;
+    font-family: var(--dr-font-body) !important;
+    font-size: 1.25rem !important;
     font-weight: 700;
-    color: var(--dr-navy);
-    margin: 0 0 .5rem !important;
+    color: var(--dr-navy) !important;
+    line-height: 1.3;
+    margin: 0 0 .75rem !important;
 }
 
 /* Body = Teil des Bandes, zentriert. Nur Werte zeigen (Labels raus). */
@@ -562,7 +600,7 @@ footer.footer-modern .modern-container {
 }
 #section-organizer .organizer-body .info-row:last-child a {
     display: inline-block;
-    padding: .9rem 2.25rem;
+    padding: 1rem 2rem;         /* DEV-1131: einheitliches Button-Padding */
     background: var(--dr-navy);
     color: #fff !important;
     font-family: var(--dr-font-head);
@@ -597,10 +635,15 @@ footer.footer-modern {
    Hero ~220px, Agenda einspaltig, kein horizontales Scrollen.
    --------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    .hero-section {
-        min-height: 220px;
-        height: 220px;
-        /* background-position: left top – siehe Basis-Regel (gilt ueberall) */
+    /* Hero: keine feste Hoehe – aspect-ratio (siehe Basis-Regel) haelt das
+       Teaserbild-Verhaeltnis auch mobil, ohne Beschnitt (DEV-1131). */
+
+    /* Seitlicher Mindestabstand 24px (DEV-1131). EMO-Default (~1rem/16px)
+       war zu gering. Gilt fuer Inhalt und Footer. */
+    #main-content .modern-container,
+    footer.footer-modern .modern-container {
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     #main-content .section-title,
@@ -633,6 +676,6 @@ footer.footer-modern {
     }
     #section-organizer .organizer-card {
         margin-top: 100px;
-        padding: 95px 1rem 2rem;
+        padding: 95px 24px 2rem;   /* seitlich mind. 24px (DEV-1131) */
     }
 }
