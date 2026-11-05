@@ -423,7 +423,6 @@ footer.footer-modern .modern-container {
    --------------------------------------------------------------------- */
 #section-location {
     background: var(--dr-grey-light) !important;
-    padding: 2rem 0 0;
 }
 
 /* Barrierefreiheit wird ausgeblendet (DEV-1131 – Entscheidung Euphorika).
@@ -443,7 +442,8 @@ footer.footer-modern .modern-container {
     border: 0;
     box-shadow: none;
     border-radius: 0;
-    padding: 1rem 0;
+    padding:  0;
+    margin-bottom: 0;
     text-align: center;
 }
 #section-location .card:hover {
@@ -497,7 +497,7 @@ footer.footer-modern .modern-container {
    --------------------------------------------------------------------- */
 #section-organizer .section-title {
     text-align: center;
-    margin-bottom: 3rem;              /* Abstand steckt im margin-top des Bandes */
+    margin-bottom: 10rem;              /* Abstand steckt im margin-top des Bandes */
 }
 /* Kein weisser Abstand zwischen Veranstalter-Band und Footer (DEV-1131) */
 #section-organizer.section {
@@ -685,6 +685,10 @@ footer.footer-modern {
     #main-content #section-location .card > h2{
         font-size: 1.9rem;         /* ~30px – 40px waere mobil zu breit */
     }
+    #section-organizer .section-title {
+    text-align: center;
+    margin-bottom: 3rem;              /* Abstand steckt im margin-top des Bandes */
+}
 }
 
 
