@@ -30,6 +30,11 @@
   src: url("/css/fonts/open-sans-v40/open-sans-v40-latin-700.woff2") format("woff2"), url("/css/fonts/open-sans-v40/open-sans-v40-latin-700.ttf") format("truetype");
   /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+/* EMO setzt die Root-Schriftgröße auf 12px -> 1rem wäre nur 12px.
+   Root hier auf 16px fixieren, damit "alle Font-Sizes = 1rem" echte 16px ergeben (DEV-1132). */
+html {
+  font-size: 16px;
+}
 body#wizard {
   margin: auto;
   width: 100%;
@@ -77,6 +82,7 @@ body#wizard #content_iframe form fieldset > section {
 body#wizard #content_iframe form fieldset > section > label {
   width: 100%;
   margin-right: 10px;
+  font-size: 1rem;
 }
 body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
   float: none;
@@ -496,6 +502,11 @@ form fieldset > section > div > div.checker span.checked::after {
 }
 #SignupAGBLabel > span[style] {
   font-weight: 400;
+  font-size: 1rem !important;
+}
+#SignupAGBLabel span,
+#SignupAGBLabel a {
+  font-size: 1rem !important;
 }
 #SignupAGBLabel a {
   color: #0E4878;
