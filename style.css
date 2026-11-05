@@ -35,8 +35,8 @@ body#wizard {
   width: 100%;
   max-width: 800px;
   font-family: "Open Sans", sans-serif !important;
-  color: #404040 !important;
-  font-size: 16px !important;
+  color: #444444 !important;
+  font-size: 1rem !important;
   line-height: 1.5em !important;
   background: #fff;
 }
@@ -60,7 +60,7 @@ body#wizard #content_iframe form fieldset {
   margin: 0;
   border: 0;
   border-radius: 0;
-  color: #000;
+  color: #444444;
 }
 body#wizard #content_iframe form fieldset > section {
   background: none;
@@ -108,8 +108,8 @@ body#wizard #content_iframe #wizard_packages_table table tbody.payment_table {
 body#wizard #content_iframe #wizard_packages_table table th, body#wizard #content_iframe #wizard_packages_table table td {
   border-color: #f2f1f1;
   background: none;
-  color: #404040;
-  font-size: 14px;
+  color: #444444;
+  font-size: 1rem;
 }
 body#wizard #content_iframe #wizard_packages_table table th:empty, body#wizard #content_iframe #wizard_packages_table table td:empty {
   display: none;
@@ -162,9 +162,9 @@ body#wizard #content_iframe .outer-div {
 }
 body#wizard #content_iframe #wizard_packages_text {
   font-family: "Archivo Black", sans-serif;
-  color: #124a7e;
+  color: #0E4878;
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 1rem;
 }
 body#wizard .byline {
   width: 90%;
@@ -217,7 +217,7 @@ iframe#id_eventmgr_if {
   min-height: 70px;
   margin-left: 0;
   align-items: center;
-  font-size: 24px;
+  font-size: 1rem;
   color: #a19e9d;
   text-transform: uppercase;
 }
@@ -226,7 +226,7 @@ iframe#id_eventmgr_if {
   background-color: #fff;
   margin: 0;
   padding: 10px 0 5px;
-  color: #124a7e;
+  color: #0E4878;
 }
 .breadcrumb li:first-child a {
   border: 0;
@@ -237,7 +237,7 @@ iframe#id_eventmgr_if {
 }
 .breadcrumb.disabled li a:hover {
   text-shadow: none;
-  color: #124a7e !important;
+  color: #0E4878 !important;
   text-decoration: none !important;
 }
 .breadcrumb.disabled li a.disable_header:hover {
@@ -261,10 +261,10 @@ iframe#id_eventmgr_if {
 a.btn, button.btn {
   font-family: "Archivo Black", sans-serif;
   text-transform: uppercase;
-  color: #124a7e;
+  color: #0E4878;
   background: none;
-  border: solid 1px #124a7e;
-  font-size: 22px;
+  border: solid 1px #0E4878;
+  font-size: 1rem;
   padding: 15px 15px;
   border-radius: 0;
   box-shadow: none;
@@ -283,7 +283,7 @@ a.btn.icon.i_arrow_right, button.btn.icon.i_arrow_right {
   background: none;
 }
 a.btn:hover, button.btn:hover {
-  color: #124a7e !important;
+  color: #0E4878 !important;
   text-decoration: none !important;
 }
 @media screen and (min-width: 425px) {
@@ -293,15 +293,15 @@ a.btn:hover, button.btn:hover {
 }
 
 #register_event {
-  background: #124a7e;
+  background: #0E4878;
   color: #fff;
   border: 0;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1;
-  padding: 9px 22px !important;
+  padding: 1rem 2rem !important;
 }
 #register_event:hover {
-  background: #0d3a63;
+  background: #0a3356;
   color: #fff !important;
 }
 
@@ -313,12 +313,19 @@ select {
   border: 0;
   padding: 20px !important;
   height: auto !important;
-  font-size: 16px;
+  font-size: 1rem;
   box-shadow: none !important;
 }
 
 select {
   height: 60px !important;
+  /* Nativen Pfeil ersetzen und mit demselben Abstand wie der Text (20px links)
+     vom rechten Rand positionieren (DEV-1132). */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f1f1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='none' stroke='%23444444' stroke-width='1.6' d='M1 1.5 7 7 13 1.5'/%3E%3C/svg%3E") no-repeat right 20px center !important;
+  padding-right: 48px !important;
 }
 
 form .required_text {
@@ -339,28 +346,28 @@ form#SignupForm .fr {
   }
 }
 form #SignupPrivacyinfoSection > label {
-  font-size: 16px !important;
+  font-size: 1rem !important;
   font-family: "Archivo Black", sans-serif;
   text-transform: uppercase;
-  color: #124a7e;
+  color: #0E4878;
   font-weight: normal !important;
 }
 form #SignupPrivacyinfoSection > div {
   text-align: left;
-  font-size: 14px !important;
+  font-size: 1rem !important;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 form #SignupPrivacyinfoSection > div span {
-  font-size: 14px !important;
+  font-size: 1rem !important;
 }
 form #SignupPrivacyinfoSection > div a {
-  color: #124a7e;
+  color: #0E4878;
   font-weight: 700;
   text-decoration: none;
 }
 form #SignupPrivacyinfoSection > div a:hover {
-  color: #0d3a63;
+  color: #0a3356;
 }
 @media screen and (min-width: 320px) {
   form #SectionSignupZip > div input#SignupZip {
@@ -474,24 +481,24 @@ form fieldset > section > div > div.checker span.checked::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1;
-  color: #124a7e;
+  color: #0E4878;
 }
 
 /* Datenschutz-Label: Fettzeile oben, Fließtext darunter, Link navy/bold */
 #SignupAGBLabel {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 13px;
-  color: #333;
+  font-size: 1rem;
+  color: #444444;
   line-height: 1.5;
 }
 #SignupAGBLabel > span[style] {
   font-weight: 400;
 }
 #SignupAGBLabel a {
-  color: #124a7e;
+  color: #0E4878;
   font-weight: 700;
   text-decoration: none;
 }
@@ -499,10 +506,10 @@ form fieldset > section > div > div.checker span.checked::after {
 body#wizard form fieldset #step_3 fieldset > label {
   background: none;
   padding-left: 0px;
-  font-size: 15px !important;
+  font-size: 1rem !important;
   font-family: "Archivo Black", sans-serif;
   text-transform: uppercase;
-  color: #124a7e;
+  color: #0E4878;
   font-weight: normal !important;
 }
 body#wizard form fieldset #step_3 fieldset > label.SignupFieldSetLabelSection {
@@ -513,9 +520,9 @@ body#wizard form fieldset #step_3 fieldset > label.SignupFieldSetLabelSection {
 body#wizard form fieldset #step_3 fieldset.optional_fields > label.SignupFieldSetLabelSection {
   font-family: "Open Sans", sans-serif;
   text-transform: none;
-  color: #333;
+  color: #444444;
   font-weight: 700 !important;
-  font-size: 14px !important;
+  font-size: 1rem !important;
   line-height: 1.6;
   letter-spacing: 0;
   padding-top: 10px !important;
@@ -527,27 +534,27 @@ body#wizard form fieldset #step_3 fieldset.optional_fields > label.SignupFieldSe
 }
 
 #step_4 {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 15px 0;
 }
 #step_4 h3 {
-  color: #124a7e;
+  color: #0E4878;
   text-transform: uppercase;
 }
 #step_4 a {
-  color: #124a7e !important;
+  color: #0E4878 !important;
   text-decoration: none !important;
 }
 #step_4 a[href^=x-apple-data-detectors] {
   display: none;
 }
 #step_4 a a:hover {
-  color: #124a7e !important;
+  color: #0E4878 !important;
   text-decoration: underline !important;
 }
 #step_4 a.btn {
   padding: 15px 55px !important;
-  font-size: 22px !important;
+  font-size: 1rem !important;
   margin-top: 25px;
   line-height: 25px;
 }
@@ -562,8 +569,8 @@ body#wizard form fieldset #step_3 fieldset.optional_fields > label.SignupFieldSe
 
 /* Fußnote "Mit einem Sternchen (*) ..." */
 #bylinePricingInfo {
-  font-size: 11px;
-  color: #333;
+  font-size: 1rem;
+  color: #444444;
 }
 
 /* Inhaltsspalte schmaler, wie Figma (~520px) */
@@ -584,7 +591,7 @@ body#wizard #content_iframe #content {
   border: 1px solid #c0291c !important;
   background: #fdecea !important;
   color: #c0291c !important;
-  font-size: 14px;
+  font-size: 1rem;
 }
 form .error input[type=text],
 form .error input[type=email],
