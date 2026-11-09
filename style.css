@@ -617,4 +617,13 @@ form .field-error {
   color: #c0291c !important;
 }
 
+body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
+    padding: 8px 0 !important;
+}
+
+#body#wizard  #SignupAGBLabel{
+    padding:  0 !important;
+    margin-top: -5px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
