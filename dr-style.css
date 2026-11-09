@@ -376,6 +376,7 @@ footer.footer-modern .modern-container {
     text-transform: uppercase;
     font-size: 1rem;           /* DEV-1131: einheitlich 1rem wie Fliesstext */
     letter-spacing: .02em;
+    line-height: 1.25rem;
     color: var(--dr-navy);
 }
 
