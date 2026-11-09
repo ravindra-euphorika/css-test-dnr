@@ -333,7 +333,7 @@ footer.footer-modern .modern-container {
     color: #fff !important;
     font-family: var(--dr-font-head);
     text-transform: uppercase;
-    font-size: .8rem;
+    font-size: 1rem;
     letter-spacing: .04em;
     line-height: 1.2;
     padding: .45rem 1rem;
@@ -482,7 +482,7 @@ footer.footer-modern .modern-container {
     color: #fff;
     font-family: var(--dr-font-head);
     text-transform: uppercase;
-    font-size: .85rem;
+    font-size: 1rem;
     letter-spacing: .02em;
 }
 #section-location .map-link:hover {
@@ -558,7 +558,7 @@ footer.footer-modern .modern-container {
    die Groesse zu den uebrigen Werten passt (DEV-1131: "h3 stimmt nicht"). */
 #section-organizer .organizer-header h3 {
     font-family: var(--dr-font-body) !important;
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
     font-weight: 700;
     color: var(--dr-navy) !important;
     line-height: 1.3;
@@ -610,7 +610,7 @@ footer.footer-modern .modern-container {
     font-family: var(--dr-font-head);
     font-weight: 400;
     text-transform: uppercase;
-    font-size: .85rem;
+    font-size: 1rem;
     letter-spacing: .02em;
 }
 #section-organizer .organizer-body .info-row:last-child a:hover {
@@ -703,11 +703,3 @@ letter-spacing: 5px;
 text-transform: uppercase;
 }
 
-body#wizard #content_iframe form fieldset > section label, body#wizard #content_iframe form fieldset > section div {
-    padding: 8px 0 !important;
-}
-
-#body#wizard  #SignupAGBLabel{
-    padding:  0 !important;
-    margin-top: -5px !important;
-}
