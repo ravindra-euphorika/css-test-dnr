@@ -383,7 +383,7 @@ footer.footer-modern .modern-container {
 #section-agenda .agenda-item > h4 {
     grid-column: 2;
     margin: 0 0 .5rem !important;
-    font-size: 1.125rem;       /* 18px Item-Titel */
+    font-size: 1rem;       /* 18px Item-Titel */
     color: var(--dr-navy) !important;   /* schlaegt Inline var(--agenda-title) */
 }
 #section-agenda .agenda-item > p {
