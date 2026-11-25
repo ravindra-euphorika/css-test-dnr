@@ -1,6 +1,6 @@
 /* =====================================================================
    D&R Veranstaltungsseite – CSS-Anpassung (EMO)
-   Client: DONNER & REUSCHEL · Agency: Euphorika · Linear DEV-1125
+   Client: DONNER & REUSCHEL · Agency: Euphorika · Linear DEV-1125 / DEV-1254
    ---------------------------------------------------------------------
    Nur dieses File wird in EMO hochgeladen. Es bringt die moderne
    Veranstaltungsseite auf das Figma-Design ("Eventseite V2.2 HH").
@@ -14,24 +14,52 @@
    ===================================================================== */
 
 /* ---------------------------------------------------------------------
-   1) FONTS
-   Archivo Black (Headlines, uppercase) + Open Sans (Fliesstext).
-   In EMO liegen die Fonts als absolute URLs auf app/content.eventmanager-
-   online.com. Solange diese URLs nicht vorliegen, laden wir die
-   identischen Google-Fonts – dieselben Schnitte, testbar mit Internet.
+   1) FONTS  (DEV-1254 – DSGVO)
+   Die DIREKTE Google-Fonts-Einbindung (@import googleapis) ist
+   datenschutzrechtlich kritisch und abmahngefaehrdet (Hinweis EMO/Fabian
+   Siebler, 17.11.) – sie wurde daher ENTFERNT. Es geht kein Request mehr
+   an Google. Bis die finale Schrift mit Reza geklaert ist (gleiche Schrift
+   Archivo Black / Open Sans ODER eine Alternative), greift der Fallback-
+   Stack aus --dr-font-head / --dr-font-body (Arial Black / system-ui).
+
+   DSGVO-konformes Self-Hosting (sobald mit Reza geklaert): die woff2-
+   Dateien FIRST-PARTY auf content.eventmanager-online.com hochladen und
+   das folgende @font-face-Scaffold aktivieren (URLs eintragen):
+
+@font-face {
+    font-family: 'Archivo Black';
+    font-style: normal; font-weight: 400; font-display: swap;
+    src: url('https://content.eventmanager-online.com/PFAD/archivo-black.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal; font-weight: 400; font-display: swap;
+    src: url('https://content.eventmanager-online.com/PFAD/open-sans-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal; font-weight: 600; font-display: swap;
+    src: url('https://content.eventmanager-online.com/PFAD/open-sans-600.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal; font-weight: 700; font-display: swap;
+    src: url('https://content.eventmanager-online.com/PFAD/open-sans-700.woff2') format('woff2');
+}
    --------------------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@400;600;700&display=swap');
 
 /* ---------------------------------------------------------------------
    2) VARIABLEN (Design-Tokens aus Figma)
    --------------------------------------------------------------------- */
 :root {
     --dr-navy:        #0E4878;  /* Headlines, Buttons, Labels (DEV-1131) */
-    --dr-mint:        #e1f4f3;  /* Anmeldung-Band                        */
-    --dr-grey-light:  #f2f2f2;  /* Auf einen Blick, Veranstaltungsort    */
+    --dr-mint:        #e1f8f6;  /* Anmeldung-Band (DEV-1254, war #e1f4f3) */
+    --dr-grey-light:  #f2f2f2;  /* Auf einen Blick                       */
     --dr-grey:        #dddddd;  /* Veranstalter-Band                     */
     --dr-logo-box:    #efefef;  /* Logo-Kasten Hintergrund               */
-    --dr-text:        #1d1d1d;  /* Fliesstext                            */
+    --dr-text:        #1d1d1d;  /* Basis-Fliesstext                      */
+    --dr-text-body:   #444444;  /* Intro + Auf einen Blick (DEV-1254)    */
+    --dr-text-agenda: #010101;  /* Programm-Beschreibungen (DEV-1254)    */
     --dr-font-head:   'Archivo Black', 'Arial Black', sans-serif;
     --dr-font-body:   'Open Sans', system-ui, -apple-system, sans-serif;
     --dr-container:   1150px;
@@ -116,6 +144,13 @@ footer.footer-modern .modern-container {
        auf keiner Breite beschnitten (bei passendem Ratio = cover zeigt das
        ganze Bild). Die Hoehe ergibt sich aus der Breite. */
     aspect-ratio: 1440 / 500;
+    /* DEV-1254: auf breiten Monitoren begrenzen. Ohne Cap waere der Hero bei
+       ~3300px ~1160px hoch. max-width 1920 + margin:auto deckelt die Hoehe bei
+       ~667px; darueber zentriert mit Seiten-Bands. cover bei passendem Ratio =
+       kein Beschnitt, das Logo (Teil des Bildes) bleibt vollstaendig. */
+    width: 100%;
+    max-width: 1920px;
+    margin-inline: auto;
     min-height: 0;
     height: auto;
     background-size: cover !important;
@@ -177,11 +212,11 @@ footer.footer-modern .modern-container {
     margin: 0 0 1.25rem;
 }
 
-/* Beschreibungstext: Figma 16px, einheitliche Textfarbe (Inline 1.1rem
-   und die .card-Farbe #1a202c ueberschreiben) */
+/* Beschreibungstext: Figma 16px, Textfarbe #444444 (DEV-1254; ueberschreibt
+   EMOs Inline 1.1rem und die .card-Farbe #1a202c) */
 #section-about .col-lg-8 > .card > div {
     font-size: 1rem !important;    /* 16px */
-    color: var(--dr-text) !important;
+    color: var(--dr-text-body) !important;   /* DEV-1254: #444444 */
 }
 /* EMO haengt der Headline oft ein leeres <h2><br></h2> als Abstandshalter
    an – das erzeugt eine grosse Luecke. Zweite direkt folgende h2 entfernen. */
@@ -233,7 +268,7 @@ footer.footer-modern .modern-container {
     text-transform: none;
     font-size: 1rem;
     letter-spacing: 0;
-    color: var(--dr-text) !important;   /* #1d1d1d */
+    color: var(--dr-text-body) !important;   /* DEV-1254: #444444 */
 }
 #section-about .brand-box .info-label::after {
     content: ":";
@@ -241,7 +276,7 @@ footer.footer-modern .modern-container {
 #section-about .brand-box .info-row > span[style] {
     text-align: left !important;
     font-size: 1rem;
-    color: var(--dr-text);
+    color: var(--dr-text-body) !important;   /* DEV-1254: #444444 (EMO inline) */
 }
 
 /* Kalender/Teilen-Buttons raus (laut Figma nicht vorhanden) */
@@ -329,14 +364,16 @@ footer.footer-modern .modern-container {
 #section-agenda .day-section > h3,
 #section-agenda .day-section:not(:has(> h3))::before {
     display: inline-block;
-    background: var(--dr-navy);
+    width: fit-content;          /* DEV-1254: Tag nur so breit wie der Inhalt */
+    max-width: 100%;
+    background: var(--dr-navy);   /* #0E4878 */
     color: #fff !important;
     font-family: var(--dr-font-head);
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: .04em;
     line-height: 1.2;
-    padding: .45rem 1rem;
+    padding: 11px 24px;          /* DEV-1254: Figma 10/11 x 24px */
     margin: 0 0 1.75rem;
 }
 #section-agenda .day-section > h3 * {
@@ -390,7 +427,7 @@ footer.footer-modern .modern-container {
 #section-agenda .agenda-item > p {
     grid-column: 2;
     margin: 0 0 .5rem !important;
-    color: var(--dr-text) !important;
+    color: var(--dr-text-agenda) !important;   /* DEV-1254: #010101 */
     font-size: 1rem;           /* DEV-1131: einheitliche Textgroesse */
     line-height: 1.6;
 }
@@ -423,7 +460,7 @@ footer.footer-modern .modern-container {
    (Im Testevent existiert nur die Barrierefreiheit-Karte.)
    --------------------------------------------------------------------- */
 #section-location {
-    background: var(--dr-grey-light) !important;
+    background: #f5f4f4 !important;   /* DEV-1254: war #f2f2f2 */
 }
 
 /* Barrierefreiheit wird ausgeblendet (DEV-1131 – Entscheidung Euphorika).
