@@ -387,6 +387,7 @@ footer.footer-modern .modern-container {
    Titel + Text rechts (Grid). Inline-Hintergruende (#ede9fe …) neutralisieren. */
 #section-agenda .agenda-item {
     display: grid;
+    grid-auto-flow: row dense;   /* Speaker-Foto rueckt in die Luecke direkt unter die Zeit (sonst grosse Luecke oben, wie zuvor) */
     grid-template-columns: 190px 1fr;
     column-gap: 2rem;
     background: none !important;
@@ -443,14 +444,16 @@ footer.footer-modern .modern-container {
     margin-top: 0 !important;
 }
 
-/* Speaker-Foto: quadratisch mit Mint-Rahmen; Abstand nur wenn ein Bild da ist */
+/* Speaker-Foto: quadratisch, ohne Rahmen und Schatten (wie zuvor); Abstand nur
+   wenn ein Bild da ist. EMO rendert das Foto nativ mit 120px (.agenda-speaker-image). */
 #section-agenda .agenda-item img {
     width: 120px;
     height: 120px;
     margin-top: .75rem;
     object-fit: cover;
-    border: 7px solid var(--dr-mint);
+    border: 0;
     border-radius: 0;
+    box-shadow: none;
 }
 
 /* ---------------------------------------------------------------------
